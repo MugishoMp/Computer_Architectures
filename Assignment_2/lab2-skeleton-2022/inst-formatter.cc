@@ -19,7 +19,7 @@ operator<<(std::ostream &os, const InstructionDecoder &decoder)
    * in "decoder" to the output stream "os". Do not include a newline.
    * And remove the statement below.
    */
-  os << "not implemented";
+  os << decoder.getOp();
 
   return os;
 }

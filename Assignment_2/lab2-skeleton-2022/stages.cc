@@ -19,6 +19,8 @@ InstructionFetchStage::propagate()
   try
     {
       /* TODO: implement instruction fetch from instruction memory. */
+      instructionMemory.setAddress(PC);
+      instructionMemory.setSize(4);//4294967295); //4 bytes
 
 #if 0
       /* Enable this once you have implemented instruction fetch. */
@@ -55,11 +57,12 @@ void
 InstructionDecodeStage::propagate()
 {
   /* TODO: set instruction word on the instruction decoder */
-
+  uint32_t instructionWord; //shouldnt be here
+  decoder.setInstructionWord(instructionWord);
   /* TODO: need a control signals class that generates control
    * signals from a given opcode and function code.
    */
-
+  
   PC = if_id.PC;
 
 

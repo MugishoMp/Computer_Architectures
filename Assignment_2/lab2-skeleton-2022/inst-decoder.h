@@ -12,8 +12,14 @@
 
 #include <stdexcept>
 #include <cstdint>
+#include <string>
+#include <bitset>
 
 static const int INSTRUCTION_SIZE = 4;
+
+enum Type {
+    R, I, S, SH, J, F, NOP, NONE
+};
 
 /* TODO: add enums and constants necessary for your instruction decoder. */
 
@@ -37,6 +43,33 @@ class IllegalInstruction : public std::runtime_error
 /* InstructionDecoder component to be used by class Processor */
 class InstructionDecoder
 {
+  
+  /*
+  enum OpCode_R {
+    H=0b001010, 
+    010001, 010011 //Jump register/Jump and Link register
+  };
+  enum OpCode_I {
+    010011, //l.maci, I or F?
+    011010, 011011,
+    100000, 100001, 100010, 100011,
+    100100, 100101, 100110, 100111,
+    101000, 101011, 101100, 
+  }; //101001, 101010, 101101, DAK not DAI?
+  enum OpCode_SH {
+    101110 //00, 01, 10, 11 op2
+  };
+  enum OpCode_F {
+    10111100000, 10111100001, 10111100010,
+    10111100011, 10111100100, 10111100101,
+    10111101010, 10111101011, 10111101100,
+    10111101101, 
+  };
+  enum OpCode_S {
+    110001, //0001, 0011, 0010, 0100
+    110010, //00001000, 00001001, 00001010, 00001011, 00001100, 00001101
+    //OO00011000, ...,  idk man
+  }; */
   public:
     void                setInstructionWord(const uint32_t instructionWord);
     uint32_t            getInstructionWord() const;
@@ -44,6 +77,17 @@ class InstructionDecoder
     RegNumber           getA() const;
     RegNumber           getB() const;
     RegNumber           getD() const;
+    RegNumber           getOp() const;
+    RegNumber           getOp2() const;
+    RegNumber           getOp3() const;
+    RegNumber           getImm(Type type) const;
+    RegNumber           getRes() const;
+    RegNumber           getImmI() const;
+    
+    uint32_t            convertToBinary() const;
+    void                split() const;
+    void                printBinary(uint32_t word) const;
+    Type                getType(uint32_t word) const;
 
     /* TODO: probably want methods to get opcode, function code */
 
@@ -51,6 +95,11 @@ class InstructionDecoder
 
   private:
     uint32_t instructionWord;
+    mutable uint32_t rD;
+    mutable uint32_t rA;
+    mutable uint32_t rB;
+    mutable uint32_t IValue;
+    std::string instructionString;
 };
 
 std::ostream &operator<<(std::ostream &os, const InstructionDecoder &decoder);
