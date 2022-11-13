@@ -18,7 +18,7 @@
 static const int INSTRUCTION_SIZE = 4;
 
 enum Type {
-    R, I, S, SH, J, F, NOP, NONE
+    R, I, S, SH, J, F, NOP, NONE, CUST4, JUMP, SF, BF
 };
 
 /* TODO: add enums and constants necessary for your instruction decoder. */
@@ -83,11 +83,16 @@ class InstructionDecoder
     RegNumber           getImm(Type type) const;
     RegNumber           getRes() const;
     RegNumber           getImmI() const;
+    uint32_t            getFunc() const;
     
     uint32_t            convertToBinary() const;
     void                split() const;
     void                printBinary(uint32_t word) const;
     Type                getType(uint32_t word) const;
+    void                StringRepresentation() const;
+    void                getOp3String() const;
+    void                getOp2String() const;
+    void                getFlagString() const;
 
     /* TODO: probably want methods to get opcode, function code */
 
@@ -99,6 +104,7 @@ class InstructionDecoder
     mutable uint32_t rA;
     mutable uint32_t rB;
     mutable uint32_t IValue;
+    mutable uint32_t immIValue;
     std::string instructionString;
 };
 

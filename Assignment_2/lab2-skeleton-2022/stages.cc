@@ -21,12 +21,11 @@ InstructionFetchStage::propagate()
       /* TODO: implement instruction fetch from instruction memory. */
       instructionMemory.setAddress(PC);
       instructionMemory.setSize(4);//4294967295); //4 bytes
+      if_id.value = instructionMemory.getValue();
 
-#if 0
       /* Enable this once you have implemented instruction fetch. */
-      if (instructionWord == TestEndMarker)
+      if (if_id.value == TestEndMarker)
         throw TestEndMarkerEncountered(PC);
-#endif
     }
   catch (TestEndMarkerEncountered &e)
     {
@@ -56,13 +55,15 @@ dump_instruction(std::ostream &os, const uint32_t instructionWord,
 void
 InstructionDecodeStage::propagate()
 {
+  ControlSignals cs;
   /* TODO: set instruction word on the instruction decoder */
-  uint32_t instructionWord; //shouldnt be here
-  decoder.setInstructionWord(instructionWord);
+  decoder.setInstructionWord(if_id.value);
   /* TODO: need a control signals class that generates control
    * signals from a given opcode and function code.
    */
-  
+  cs.setOp(decoder.getOp());
+  cs.setFunc(decoder.getFunc());  
+
   PC = if_id.PC;
 
 
@@ -86,6 +87,11 @@ InstructionDecodeStage::propagate()
 
   /* TODO: register fetch and other matters */
   /* TODO: perhaps also determine and write the new PC here? */
+  regfile.setRS1(decoder.getA());
+  regfile.setRS2(decoder.getB());
+  RegValue RS1_value = regfile.getReadData1();
+  RegValue RS2_value = regfile.getReadData2();
+  PC += 4;
 }
 
 void InstructionDecodeStage::clockPulse()

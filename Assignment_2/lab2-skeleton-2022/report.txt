@@ -1,0 +1,13 @@
+This program does not work as everything happens in inst-decoder.cc.
+inst-formatter.cc calls inst-decoder.cc which prints the outcomes of the given files 
+(e.g. ./rv64-emu -X ../lab2-test-programs-2022/basic.bin)
+stages.cc is not used, therefore no pipeline registers were used.
+This also means no testing and technically nothing works.
+
+Input which has less than 32 bits (e.g. 0x07ffffee) will have 0s
+added at the front of the value in order to get to 32 bits.
+This causes illegal instruction exceptions to be handed out
+in some cases (e.g. 0x07ffffee)
+
+Chuckyin Sin: Everything
+Mugisho Mpozi: InstructionDecoderStage()

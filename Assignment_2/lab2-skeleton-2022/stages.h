@@ -25,7 +25,7 @@
 struct IF_IDRegisters
 {
   MemAddress PC = 0;
-
+  RegValue value;
   /* TODO: add necessary fields */
 };
 
@@ -70,6 +70,21 @@ class Stage
 
   protected:
     bool pipelining;
+};
+
+/* 
+ * Control Signals Class
+ */
+
+class ControlSignals {
+  public:
+    ControlSignals() {};
+    void setOp(const RegNumber newOp) { op = newOp; };
+    void setFunc(const uint32_t newFunc) { func = newFunc; };
+
+  private:
+    RegNumber op;
+    uint32_t func;
 };
 
 
