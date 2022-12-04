@@ -27,6 +27,7 @@ TARGETS = \
 		matrixmul-r1-n512	\
 		matrixmul-r50-n512	\
 		grayscale		\
+		grayscaleLoopInterchange\
 		tilecomposite		\
 		postcode
 
