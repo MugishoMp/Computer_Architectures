@@ -25,7 +25,16 @@ LDFLAGS += -lrt
 # Register additional targets here
 TARGETS = \
 		matrixmul-r1-n512	\
-		matrixmul-r50-n512	\
+		matrixmul-r1-n512-b16  \
+		matrixmul-r1-n512-b32  \
+		matrixmul-r1-n512-b64  \
+		matrixmul-r1-n512-b128  \
+		matrixmul-r50-n512  \
+		matrixmul-r50-n512-b4  \
+		matrixmul-r50-n512-b16  \
+		matrixmul-r50-n512-b32  \
+		matrixmul-r50-n512-b64  \
+		matrixmul-r50-n512-b128  \
 		grayscale		\
 		grayscaleLoopInterchange\
 		tilecomposite		\
@@ -38,9 +47,46 @@ all:		$(TARGETS)
 matrixmul-r1-n512:	matrixmul.c support/timing.c
 			$(CC) $(CFLAGS) -DN=512 -DN_REPEAT=1 -o $@ $^ $(LDFLAGS)
 
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=16 block size
+matrixmul-r1-n512-b16:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=1 -DN=512 -DBLOCK=16 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=32 block size
+matrixmul-r1-n512-b32:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=1 -DN=512 -DBLOCK=32 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=64 block size
+matrixmul-r1-n512-b64:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=1 -DN=512 -DBLOCK=64 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=128 block size
+matrixmul-r1-n512-b128:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=1 -DN=512 -DBLOCK=128 -o $@ $^ $(LDFLAGS)
+
 # Define a target for matrixmul, 50 repeat, N=512 matrix size
 matrixmul-r50-n512:	matrixmul.c support/timing.c
 			$(CC) $(CFLAGS) -DN=512 -DN_REPEAT=50 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=4 block size
+matrixmul-r50-n512-b4:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=50 -DN=512 -DBLOCK=4 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=16 block size
+matrixmul-r50-n512-b16:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=50 -DN=512 -DBLOCK=16 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=32 block size
+matrixmul-r50-n512-b32:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=50 -DN=512 -DBLOCK=32 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=64 block size
+matrixmul-r50-n512-b64:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=50 -DN=512 -DBLOCK=64 -o $@ $^ $(LDFLAGS)
+
+# Define a target for matrixmul, 1 repeat, N=512 matrix size, BLOCK=128 block size
+matrixmul-r50-n512-b128:	matrixmulLoopBlocking.c support/timing.c
+			$(CC) $(CFLAGS) -DN_REPEAT=50 -DN=512 -DBLOCK=128 -o $@ $^ $(LDFLAGS)
+
 
 # TODO: define more targets here for your experiments.
 # In this case, you also want to include a compiler flag to define the
