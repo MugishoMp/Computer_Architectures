@@ -1,0 +1,42 @@
+instructions,cycles,cache-misses,cache-references
+./grayscaleLoopInterchange
+4434603,,instructions:u,0,00%,942049,100,00,1,insn per cycle
+2542030,,cycles:u,0,22%,942049,100,00,,
+574,,cache-misses:u,38,27%,942049,100,00,1,of all cache refs
+30301,,cache-references:u,0,29%,942049,100,00,,
+5553878,,instructions:u,0,00%,1074063,100,00,1,insn per cycle
+3077906,,cycles:u,0,19%,1074063,100,00,,
+796,,cache-misses:u,31,26%,1074063,100,00,2,of all cache refs
+31170,,cache-references:u,0,33%,1074063,100,00,,
+6673099,,instructions:u,0,00%,1207915,100,00,1,insn per cycle
+3608356,,cycles:u,0,16%,1207915,100,00,,
+773,,cache-misses:u,29,06%,1207915,100,00,2,of all cache refs
+31362,,cache-references:u,0,40%,1207915,100,00,,
+7792413,,instructions:u,0,00%,1330966,100,00,1,insn per cycle
+4136113,,cycles:u,0,15%,1330966,100,00,,
+708,,cache-misses:u,28,93%,1330966,100,00,2,of all cache refs
+31253,,cache-references:u,0,55%,1330966,100,00,,
+8911546,,instructions:u,0,00%,1495114,100,00,1,insn per cycle
+4781200,,cycles:u,0,13%,1495114,100,00,,
+666,,cache-misses:u,40,98%,1495114,100,00,1,of all cache refs
+38446,,cache-references:u,0,60%,1495114,100,00,,
+10030737,,instructions:u,0,00%,1599853,100,00,1,insn per cycle
+5210395,,cycles:u,0,15%,1599853,100,00,,
+749,,cache-misses:u,29,98%,1599853,100,00,2,of all cache refs
+32968,,cache-references:u,0,78%,1599853,100,00,,
+11150231,,instructions:u,0,00%,1719020,100,00,1,insn per cycle
+5737575,,cycles:u,0,14%,1719020,100,00,,
+666,,cache-misses:u,40,55%,1719020,100,00,1,of all cache refs
+34437,,cache-references:u,0,82%,1719020,100,00,,
+12269435,,instructions:u,0,00%,1850462,100,00,1,insn per cycle
+6284720,,cycles:u,0,21%,1850462,100,00,,
+574,,cache-misses:u,38,05%,1850462,100,00,1,of all cache refs
+39935,,cache-references:u,0,97%,1850462,100,00,,
+13388496,,instructions:u,0,00%,2086853,100,00,1,insn per cycle
+6976796,,cycles:u,0,14%,2086853,100,00,,
+608,,cache-misses:u,45,87%,2086853,100,00,1,of all cache refs
+37485,,cache-references:u,1,18%,2086853,100,00,,
+14507913,,instructions:u,0,00%,2212547,100,00,1,insn per cycle
+7516486,,cycles:u,0,15%,2212547,100,00,,
+810,,cache-misses:u,30,86%,2212547,100,00,2,of all cache refs
+35963,,cache-references:u,1,14%,2212547,100,00,,
