@@ -1,43 +1,11 @@
 instructions,cycles,cache-misses,cache-references
-testImages/lulogo128.png
-./grayscale
-4434604,,instructions:u,0,00%,959662,100,00,1,insn per cycle
-2576810,,cycles:u,0,25%,959662,100,00,,
-585,,cache-misses:u,40,13%,959662,100,00,1,of all cache refs
-31569,,cache-references:u,0,85%,959662,100,00,,
-5553787,,instructions:u,0,00%,1069276,100,00,1,insn per cycle
-3112120,,cycles:u,0,33%,1069276,100,00,,
-497,,cache-misses:u,53,40%,1069276,100,00,1,of all cache refs
-34704,,cache-references:u,1,45%,1069276,100,00,,
-6673139,,instructions:u,0,00%,1227498,100,00,1,insn per cycle
-3708908,,cycles:u,0,22%,1227498,100,00,,
-744,,cache-misses:u,34,88%,1227498,100,00,1,of all cache refs
-37792,,cache-references:u,3,62%,1227498,100,00,,
-7792360,,instructions:u,0,00%,1367050,100,00,1,insn per cycle
-4235232,,cycles:u,0,14%,1367050,100,00,,
-650,,cache-misses:u,31,60%,1367050,100,00,1,of all cache refs
-35943,,cache-references:u,3,45%,1367050,100,00,,
-8911532,,instructions:u,0,00%,1508544,100,00,1,insn per cycle
-4838338,,cycles:u,0,21%,1508544,100,00,,
-547,,cache-misses:u,37,04%,1508544,100,00,1,of all cache refs
-46202,,cache-references:u,3,24%,1508544,100,00,,
-10030825,,instructions:u,0,00%,1656951,100,00,1,insn per cycle
-5439720,,cycles:u,0,15%,1656951,100,00,,
-756,,cache-misses:u,34,11%,1656951,100,00,1,of all cache refs
-33914,,cache-references:u,8,25%,1656951,100,00,,
-11149933,,instructions:u,0,00%,1759513,100,00,1,insn per cycle
-5871463,,cycles:u,0,14%,1759513,100,00,,
-866,,cache-misses:u,25,01%,1759513,100,00,2,of all cache refs
-36339,,cache-references:u,4,90%,1759513,100,00,,
-12269254,,instructions:u,0,00%,1913710,100,00,1,insn per cycle
-6514217,,cycles:u,0,17%,1913710,100,00,,
-609,,cache-misses:u,39,51%,1913710,100,00,1,of all cache refs
-33235,,cache-references:u,8,47%,1913710,100,00,,
-13388419,,instructions:u,0,00%,2068089,100,00,1,insn per cycle
-7096959,,cycles:u,0,19%,2068089,100,00,,
-976,,cache-misses:u,27,01%,2068089,100,00,1,of all cache refs
-45372,,cache-references:u,13,98%,2068089,100,00,,
-14507777,,instructions:u,0,00%,2195126,100,00,1,insn per cycle
-7659221,,cycles:u,0,14%,2195126,100,00,,
-559,,cache-misses:u,50,75%,2195126,100,00,0,of all cache refs
-32406,,cache-references:u,14,78%,2195126,100,00,,
+4434604,2576810,585,31569
+5553787,3112120,497,34704
+6673139,3708908,744,37792
+7792360,4235232,650,35943
+8911532,4838338,547,46202
+10030825,5439720,756,33914
+11149933,5871463,866,36339
+12269254,6514217,609,33235
+13388419,7096959,976,45372
+14507777,7659221,559,32406
