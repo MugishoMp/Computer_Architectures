@@ -34,22 +34,22 @@ void op_tile_composite(image_t *const background,
   const int d_height = MIN(background->width, background->height);
   const int t_height = tile->height;
   const int t_width = tile->width;
-  int BLOCK = 16;
+  int BLOCK = 64;
 
 
   for (int d = 0; d < d_height; d += t_height) { 
 
-    for (size_t jj = d; jj < d + t_height; jj =jj + BLOCK) {
+    for (size_t jj = d; jj < d + t_height; jj = jj + BLOCK) {
 
       for (size_t kk = d; kk < d + t_width; kk = kk + BLOCK) {
 
         int limit1 = (jj + BLOCK < d + t_height) ? jj + BLOCK : d + t_height;
-        limit1 = (limit1 < d_height) ? limit1 : d_height;
+        // limit1 = (limit1 < d_height) ? limit1 : d_height;
         for (int y = jj; y < limit1; y++) { 
 
           int limit2 = (kk + BLOCK < d + t_width) ? kk + BLOCK : d + t_width;
-          limit2 = (limit2 < d_height) ? limit2 : d_height;
-          for (int x = d; x < d + limit2; x++) {
+          // limit2 = (limit2 < d_height) ? limit2 : d_height;
+          for (int x = d; x < limit2; x++) {
 
             int tx = x % t_width;
             int ty = y % t_height;
