@@ -54,4 +54,7 @@ plt.ylabel('No. instructions executed')
 plt.yscale('log')
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
+fig = plt.gcf()
+fig.set_size_inches(4, 3)
+fig.savefig('numberInstructionsGraph.png', bbox_inches='tight')
 plt.show()

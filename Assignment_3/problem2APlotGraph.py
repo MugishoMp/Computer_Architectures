@@ -2,16 +2,18 @@
 
 import os
 import pandas as pd
+import matplotlib
+matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 
 colors = ['red', 'green', 'blue', 'purple', 'orange']
 
 #########################PLOT #############################
 
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 
 ### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindDefaultGrayscale/' # Use your path
+PATH = 'dataMatrixMultiplication/' # Use your path
 
 ### Fetch all files in path
 fileNames = os.listdir(PATH)
@@ -25,41 +27,23 @@ for file in fileNames:
     print(file + ' ' + str(i))
 
     ### Read .csv file and append to list
-    df = pd.read_csv(PATH + file, usecols = ['Dr', 'D1mr', 'DLmr'])
+    df = pd.read_csv(PATH + file, usecols = ['blocksize','llrefs','llmisses'])
 
     ### Create line for every file
-    plt.plot((((df['D1mr'] + df['DLmr']) / df['Dr'])), c = colors[i], linestyle='dashed', label='image ' + str(i))
+    ax = plt.plot(df['blocksize'], df['llrefs'], c = colors[i], label='With loop blocking')
+    plt.hlines(y=1076103904,xmin=0, xmax=600, label='Without loop blocking' )
     i += 1
 
-### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindOptimizedGrayscale/' # Use your path
-
-### Fetch all files in path
-fileNames = os.listdir(PATH)
-
-### Filter file name list for files ending with .csv
-fileNames = [file for file in fileNames if '.csv' in file]
-
-i = 0
-### Loop over all files
-for file in fileNames:
-    print(file)
-    ### Read .csv file and append to list
-    df2 = pd.read_csv(PATH + file, usecols = ['Dr', 'D1mr', 'DLmr'])
-
-    ### Create line for every file
-    plt.plot((((df2['D1mr'] + df2['DLmr']) / df2['Dr'])), c = colors[i], label='image ' + str(i) + ' optimized')
-    i += 1
-
-plt.xlabel('repeat count')
-plt.ylabel('Cache miss rate')
+plt.xlabel('block size')
+plt.ylabel('LL references')
+plt.yscale('log')
 
 
 #########################PLOT 2#############################
 
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 2)
 ### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindDefaultGrayscale/' # Use your path
+PATH = 'dataMatrixMultiplication/' # Use your path
 
 ### Fetch all files in path
 fileNames = os.listdir(PATH)
@@ -73,14 +57,24 @@ for file in fileNames:
     print(file + ' ' + str(i))
 
     ### Read .csv file and append to list
-    df = pd.read_csv(PATH + file, usecols = ['Dr', 'D1mr', 'DLmr'])
+    df = pd.read_csv(PATH + file, usecols = ['blocksize','llrefs','llmisses'])
 
     ### Create line for every file
-    plt.plot((((df['D1mr'] + df['DLmr']) / df['Dr'])), c = colors[i], linestyle='dashed', label='image ' + str(i))
+    plt.plot(df['blocksize'], df['llmisses'], c = colors[i], label='With loop blocking' )
+    plt.hlines(y=1076043621,xmin=0, xmax=600, label='Without loop blocking' )
     i += 1
 
+plt.xlabel('block size')
+plt.ylabel('LL misses')
+# plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+plt.tight_layout(pad=1.0)
+plt.yscale('log')
+
+#########################PLOT 3#############################
+
+plt.subplot(1, 3, 3)
 ### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindOptimizedGrayscale/' # Use your path
+PATH = 'dataMatrixMultiplication/' # Use your path
 
 ### Fetch all files in path
 fileNames = os.listdir(PATH)
@@ -91,19 +85,21 @@ fileNames = [file for file in fileNames if '.csv' in file]
 i = 0
 ### Loop over all files
 for file in fileNames:
-    print(file)
+    print(file + ' ' + str(i))
+
     ### Read .csv file and append to list
-    df2 = pd.read_csv(PATH + file, usecols = ['Dr', 'D1mr', 'DLmr'])
+    df = pd.read_csv(PATH + file, usecols = ['blocksize','llrefs','llmisses'])
 
     ### Create line for every file
-    plt.plot((((df2['D1mr'] + df2['DLmr']) / df2['Dr'])), c = colors[i], label='image ' + str(i) + ' optimized')
+    plt.plot(df['blocksize'], ((df['llmisses'] / df['llrefs'])), c = colors[i], label='With loop blocking' )
+    plt.hlines(y=0.99994398031,xmin=0, xmax=600, label='Without loop blocking' )
     i += 1
 
-plt.xlabel('repeat count')
-plt.ylabel('Cache miss rate')
-plt.yscale('log')
-plt.title('Using logarithmic scale')
+plt.xlabel('block size')
+plt.ylabel('LL miss rate')
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+plt.tight_layout(pad=1.0)
+plt.yscale('log')
 
 
 

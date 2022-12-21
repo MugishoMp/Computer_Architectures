@@ -2,14 +2,14 @@
 
 import os
 import pandas as pd
+import matplotlib
+matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 
 colors = ['red', 'green', 'blue', 'purple', 'orange']
 
-#########################PLOT #############################
-
 ### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindDefaultGrayscale/' # Use your path
+PATH = 'dataPerfDefaultGrayscale/' # Use your path
 
 ### Fetch all files in path
 fileNames = os.listdir(PATH)
@@ -23,14 +23,14 @@ for file in fileNames:
     print(file + ' ' + str(i))
 
     ### Read .csv file and append to list
-    df = pd.read_csv(PATH + file, usecols = ['Dr'])
+    df = pd.read_csv(PATH + file, usecols = ['cache-misses'])
 
     ### Create line for every file
-    plt.plot(df, c = colors[i], linestyle='dashed', label='image ' + str(i))
+    plt.plot(df, c = colors[i], label='image ' + str(i))
     i += 1
 
 ### Set your path to the folder containing the .csv files
-PATH = 'dataCachegrindOptimizedGrayscale/' # Use your path
+PATH = 'dataPerfOptimizedGrayscale/' # Use your path
 
 ### Fetch all files in path
 fileNames = os.listdir(PATH)
@@ -43,17 +43,19 @@ i = 0
 for file in fileNames:
     print(file)
     ### Read .csv file and append to list
-    df2 = pd.read_csv(PATH + file, usecols = ['DLmw'])
+    df2 = pd.read_csv(PATH + file, usecols = ['cache-misses'])
 
     ### Create line for every file
-    plt.plot(df2, c = colors[i], label='image ' + str(i) + ' optimized')
+    plt.plot(df2, c = colors[i], linestyle='dashed', label='image ' + str(i) + ' optimized')
     i += 1
 
+
 plt.xlabel('repeat count')
-plt.ylabel('Cache reads')
+plt.ylabel('Cache-References Perf (100 measurement average)')
 plt.yscale('log')
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
+plt.tight_layout(pad=1.0)
 fig = plt.gcf()
 fig.set_size_inches(4, 3)
 fig.savefig('diskReadsGraph.png', bbox_inches='tight')
